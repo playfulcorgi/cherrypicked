@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "pocket-cherrypicked",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node-transpile build",
+    "watch": "node-transpile watch",
+
+    "docker-build": "docker build -t cherrypicked .",
+    "docker-run-development": "docker run -ti -v \"$(pwd)\":/app --name cherrypicked --rm -p 8835:80 cherrypicked",
+    "docker-run-production": "docker run -ti --name cherrypicked --rm -p 8835:80 --env-file .env cherrypicked"
+  },
+  "author": "playfulcorgi",
+  "license": "ISC",
+  "devDependencies": {
+    "node-transpile": "^1.1.1"
+  },
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "dotenv": "^6.1.0",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
