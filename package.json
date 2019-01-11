@@ -7,9 +7,9 @@
   "scripts": {
     "build": "node-transpile build",
     "watch": "node-transpile watch",
-    "docker-build": "docker build -t cherrypicked .",
-    "docker-run-development": "docker run -ti -v \"$(pwd)\":/app --name cherrypicked --rm -p 8835:8888 --env-file .env cherrypicked",
-    "docker-run-production": "docker run -ti --name cherrypicked --rm -p 8835:8888 --env-file .env cherrypicked"
+    "docker-build": "docker build -t playfulcorgi/cherrypicked .",
+    "docker-run-development": "docker run -ti -v \"$(pwd)\":/app --name cherrypicked --rm -p 8835:8888 --env-file .env playfulcorgi/cherrypicked",
+    "docker-run-production": "docker run -ti --name cherrypicked --rm -p 8835:8888 --env-file .env -e WATCH=false playfulcorgi/cherrypicked"
   },
   "author": "playfulcorgi",
   "license": "ISC",
