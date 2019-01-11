@@ -7,10 +7,9 @@
   "scripts": {
     "build": "node-transpile build",
     "watch": "node-transpile watch",
-
     "docker-build": "docker build -t cherrypicked .",
-    "docker-run-development": "docker run -ti -v \"$(pwd)\":/app --name cherrypicked --rm -p 8835:80 cherrypicked",
-    "docker-run-production": "docker run -ti --name cherrypicked --rm -p 8835:80 --env-file .env cherrypicked"
+    "docker-run-development": "docker run -ti -v \"$(pwd)\":/app --name cherrypicked --rm -p 8835:8888 --env-file .env cherrypicked",
+    "docker-run-production": "docker run -ti --name cherrypicked --rm -p 8835:8888 --env-file .env cherrypicked"
   },
   "author": "playfulcorgi",
   "license": "ISC",
@@ -20,6 +19,7 @@
   "dependencies": {
     "argparse": "^1.0.10",
     "dotenv": "^6.1.0",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "serialize-error": "^3.0.0"
   }
 }
