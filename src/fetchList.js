@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-const fetchList = (consumerKey, accessToken, tag) => {
+const fetchList = (consumerKey, accessToken, tag, screenshotServiceUrl) => {
 	const url = 'https://getpocket.com/v3/get'
 	
 	return fetch(
@@ -33,12 +33,27 @@ const fetchList = (consumerKey, accessToken, tag) => {
 			Object.keys(json.list)
 				.map(key => {
 					const { top_image_url, has_image, resolved_url, resolved_title, time_updated } = json.list[key]
-					return {
-						imageUrl: top_image_url,
-						hasImage: has_image === '1',
+					const basicValues = {
 						sourceUrl: resolved_url,
 						title: resolved_title,
 						time: time_updated
+					}
+
+					if (!screenshotServiceUrl) {
+						return {
+							...basicValues,
+							imageUrl: top_image_url,
+							hasImage: has_image === '1'
+						}
+					} else {
+						const screenshotUrl = new URL(screenshotServiceUrl)
+						screenshotUrl.searchParams.append('url', resolved_url)
+						const imageUrl = screenshotUrl.href
+						return {
+							...basicValues,
+							imageUrl,
+							hasImage: true,
+						}
 					}
 				})
 				.sort((a, b) => a.time < b.time)

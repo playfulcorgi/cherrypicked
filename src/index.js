@@ -49,7 +49,7 @@ export default (_, response) => {
   const pocketTag = process.env.POCKET_TAG
   const screenshotServiceUrl = process.env.SCREENSHOT_SERVICE_URL
 
-  fetchList(consumerKey, accessToken, pocketTag)
+  fetchList(consumerKey, accessToken, pocketTag, screenshotServiceUrl)
     .then((pocketResponse) => {
       response.json(pocketResponse)
     })
