@@ -1,4 +1,33 @@
-[Pocket](https://getpocket.com) listing API
+# [Pocket](https://getpocket.com) listing API
+
+Example response:
+
+```js
+[
+  {
+    "imageUrl": "https://screenshots.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNDZdsqbcGTU",
+    "hasImage": true,
+    "sourceUrl": "https://www.youtube.com/watch?v=NDZdsqbcGTU",
+    "title": "WHERE DREAMS GO TO DIE - Gary Robbins and The Barkley Marathons",
+    "time": "1546892639"
+  },
+  {
+    "imageUrl": "https://screenshots.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaoMfbgF2D_4",
+    "hasImage": true,
+    "sourceUrl": "https://www.youtube.com/watch?v=aoMfbgF2D_4",
+    "title": "Martin Fowler – Continuous Delivery",
+    "time": "1545145254"
+  },
+  {
+    "imageUrl": "https://screenshots.com/?url=https%3A%2F%2Fmedium.freecodecamp.org%2Fthe-revolution-of-pure-views-aed339db7da4",
+    "hasImage": true,
+    "sourceUrl": "https://medium.freecodecamp.org/the-revolution-of-pure-views-aed339db7da4",
+    "title": "Functional Programming is taking over UIs with Pure Views.",
+    "time": "1547043110"
+  },
+  ...
+]
+```
 
 Running order:
 
