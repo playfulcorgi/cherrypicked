@@ -1,3 +1,4 @@
+import serializeError from 'serialize-error'
 import fetchAuthStepDescription from './authorizePocketApp'
 import fetchAccessToken from './fetchAccessToken'
 import fetchList from './fetchList'
@@ -42,10 +43,11 @@ if (process.env.TERMINAL === 'true') {
   }
 }
 
-export default (request, response) => {
+export default (_, response) => {
   const consumerKey = process.env.CONSUMER_KEY
   const accessToken = process.env.ACCESS_TOKEN
   const pocketTag = process.env.POCKET_TAG
+  const screenshotServiceUrl = process.env.SCREENSHOT_SERVICE_URL
 
   fetchList(consumerKey, accessToken, pocketTag)
     .then((pocketResponse) => {
@@ -54,7 +56,7 @@ export default (request, response) => {
     .catch((error) => {
       response.statusCode = 500
       response.json({
-        error: error
+        error: serializeError(error)
       })
     })
 }
